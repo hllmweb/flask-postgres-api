@@ -4,13 +4,17 @@ from resources import HealthCheck, \
 from models import User as UserModel, db
 from flask_migrate import Migrate
 from app import create_app
+from flask_talisman import Talisman
 
 
 app = create_app()
 migrate = Migrate(app, db)
-
+csp = {
+    'default-src': '\'self\''
+}
 
 # API
+talisman = Talisman(app, content_security_policy=csp)
 api = Api(app)
 api.add_resource(HealthCheck, '/healthcheck')
 api.add_resource(UserList, '/api/users')
