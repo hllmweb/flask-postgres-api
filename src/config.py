@@ -41,9 +41,10 @@ def get_config(env=None):
     if env is None:
         try:
             env = get_env_variable('ENV')
+            print('env iniciada: ', env)
         except Exception:
             env = 'development'
-            print('env is not set, using env:', env)
+            print('env não foi definda, usando env:', env)
 
     if env == 'production':
         return ProductionConfig()

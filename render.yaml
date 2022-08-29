@@ -39,4 +39,4 @@ envVarGroups:
 
 databases:
 - name: flask-postgres-api-db
-  databaseName: mydb
+  databaseName: postgres

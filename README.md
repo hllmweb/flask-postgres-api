@@ -27,7 +27,7 @@ pip install -r requirements.txt
 Initialise environment variables. The `.env` is used in `docker-compose.yml`.
 ```
 export FLASK_APP="src/main.py"
-export POSTGRES_URL="127.0.0.1:5432"
+    export POSTGRES_URL="127.0.0.1:5432"
 export POSTGRES_DB="mydb"
 export POSTGRES_USER="postgres"
 export POSTGRES_PASSWORD="example"
@@ -69,3 +69,17 @@ Run the app
 ```
 cd src && gunicorn main:app
 ```
+
+
+## Update project build docker container
+-- update project build docker compose
+```docker-compose build --pull
+```
+
+```
+docker-compose up -d
+```
+
+
+https://stackoverflow.com/questions/29377853/how-to-use-environment-variables-in-docker-compose
+docker compose -f docker-compose.yml -f docker-compose.local.yml up --build

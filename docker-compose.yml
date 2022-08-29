@@ -8,7 +8,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin
     ports:
-      - "5432:5432"
+      - "5433:5432"
   run-migrations:
     build: .
     restart: on-failure
@@ -26,6 +26,10 @@ services:
       - db
   api:
     build: .
+    command: > 
+      bash -c "
+            pip install -r requirements.txt && 
+            flask run -h 0.0.0.0"
     restart: on-failure
     environment:
       POSTGRES_DB: postgres
@@ -36,3 +40,5 @@ services:
       - "5000:5000"
     depends_on: 
       - db
+    volumes:
+      - ./:/flask-app
